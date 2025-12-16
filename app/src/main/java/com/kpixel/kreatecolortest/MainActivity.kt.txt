@@ -1,0 +1,81 @@
+package com.kpixel.kreatecolortest
+
+import android.graphics.Color
+import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.kpixel.kreatecolortest.views.AlphaSliderView
+import com.kpixel.kreatecolortest.views.HueSliderView
+import com.kpixel.kreatecolortest.views.SaturationValueView
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var saturationView: SaturationValueView
+    private lateinit var hueSlider: HueSliderView
+    private lateinit var alphaSlider: AlphaSliderView
+    private lateinit var viewPreview: View
+
+    private var currentHue = 0f
+    private var currentSat = 1f
+    private var currentVal = 1f
+    private var currentAlpha = 255
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        saturationView = findViewById(R.id.saturationView)
+        hueSlider = findViewById(R.id.hueSlider)
+        alphaSlider = findViewById(R.id.alphaSlider)
+        viewPreview = findViewById(R.id.viewPreview)
+
+        setupListeners()
+
+        // ডিফল্ট সেটআপ
+        currentHue = 210f
+        saturationView.setHue(currentHue)
+        hueSlider.setHue(currentHue)
+
+        // ইনিশিয়াল আপডেট
+        updateSolidColorForSlider()
+        updatePreviewBox()
+    }
+
+    private fun setupListeners() {
+        // ১. Hue Slider -> স্লাইডার এবং প্রিভিউ দুইটাই আপডেট হবে
+        hueSlider.onHueChanged = { hue ->
+            currentHue = hue
+            saturationView.setHue(hue)
+            updateSolidColorForSlider()
+            updatePreviewBox()
+        }
+
+        // ২. Saturation -> স্লাইডার এবং প্রিভিউ দুইটাই আপডেট হবে
+        saturationView.onColorChanged = { hsv ->
+            currentSat = hsv[1]
+            currentVal = hsv[2]
+            updateSolidColorForSlider()
+            updatePreviewBox()
+        }
+
+        // ৩. Alpha Slider -> শুধুমাত্র প্রিভিউ আপডেট হবে (স্লাইডারের কালার ফিক্সড থাকবে)
+        alphaSlider.onAlphaChanged = { alpha ->
+            currentAlpha = alpha
+            updatePreviewBox()
+        }
+    }
+
+    // আলফা স্লাইডারের ডানদিকের রঙ সেট করা (Alpha 255)
+    private fun updateSolidColorForSlider() {
+        val hsv = floatArrayOf(currentHue, currentSat, currentVal)
+        val solidColor = Color.HSVToColor(255, hsv)
+        alphaSlider.setSolidColor(solidColor)
+    }
+
+    // প্রিভিউ বক্সের রঙ সেট করা (Alpha সহ)
+    private fun updatePreviewBox() {
+        val hsv = floatArrayOf(currentHue, currentSat, currentVal)
+        val finalColor = Color.HSVToColor(currentAlpha, hsv)
+        viewPreview.setBackgroundColor(finalColor)
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="cp_bg_dark">#101622</color>       <!-- Main Background -->
+    <color name="cp_surface_dark">#1a2233</color>  <!-- Modal Background -->
+    <color name="cp_input_dark">#222f49</color>    <!-- Input Field Background -->
+    <color name="cp_primary">#0d59f2</color>       <!-- Active Blue Color -->
+    <color name="cp_text_gray">#80FFFFFF</color>   <!-- Label Color -->
+    <color name="cp_divider">#1AFFFFFF</color>     <!-- Thin Lines -->
+
+</resources>

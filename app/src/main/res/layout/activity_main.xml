@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#101622"> <!-- Dark Background -->
+
+    <!-- ১. প্রিভিউ বক্স -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PREVIEW"
+        android:textColor="#80FFFFFF"
+        android:textSize="12sp"
+        android:layout_marginBottom="8dp"/>
+
+    <View
+        android:id="@+id/viewPreview"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- ২. ট্যাব (Solid | Linear | Radial) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="#222f49"> <!-- Tab Background -->
+
+        <!-- Solid Tab -->
+        <TextView
+            android:id="@+id/tabSolid"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Solid"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="?attr/selectableItemBackground"/>
+
+        <!-- Linear Tab -->
+        <TextView
+            android:id="@+id/tabLinear"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Linear"
+            android:gravity="center"
+            android:textColor="#888888"
+            android:textStyle="bold"
+            android:background="?attr/selectableItemBackground"/>
+
+        <!-- Radial Tab (NEW) -->
+        <TextView
+            android:id="@+id/tabRadial"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Radial"
+            android:gravity="center"
+            android:textColor="#888888"
+            android:textStyle="bold"
+            android:background="?attr/selectableItemBackground"/>
+    </LinearLayout>
+
+    <!-- ৩. গ্রেডিয়েন্ট সেকশন (Linear/Radial মোডে দৃশ্যমান হবে) -->
+    <LinearLayout
+        android:id="@+id/gradientContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="15dp"
+        android:visibility="gone">
+
+        <!-- গ্রেডিয়েন্ট স্লাইডার -->
+        <com.kpixel.kreatecolorpicker.views.GradientSeekBar
+            android:id="@+id/gradientSeekBar"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"/>
+
+        <!-- ডিলিট বাটন (স্টপ রিমুভ করার জন্য) -->
+        <ImageButton
+            android:id="@+id/btnDeleteStop"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#FFFFFF"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Delete Stop"/>
+    </LinearLayout>
+
+    <!-- ৪. সলিড কালার কন্ট্রোলস (Sat/Val, Hue, Alpha) -->
+    <!-- এই অংশটি সবসময় থাকবে কারণ গ্রেডিয়েন্ট স্টপ এডিট করতেও এটি লাগে -->
+
+    <!-- Saturation Map (Remaining Space Filler) -->
+    <com.kpixel.kreatecolorpicker.views.SaturationValueView
+        android:id="@+id/saturationView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Hue Slider -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HUE"
+        android:textColor="#80FFFFFF"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"/>
+
+    <com.kpixel.kreatecolorpicker.views.HueSliderView
+        android:id="@+id/hueSlider"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="15dp"/>
+
+    <!-- Alpha Slider -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OPACITY"
+        android:textColor="#80FFFFFF"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"/>
+
+    <com.kpixel.kreatecolorpicker.views.AlphaSliderView
+        android:id="@+id/alphaSlider"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- ৫. হেক্স ইনপুট -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#222f49"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#"
+            android:textColor="#80FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp"/>
+
+        <EditText
+            android:id="@+id/etHexCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="HEX CODE"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#80FFFFFF"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:maxLines="1"
+            android:inputType="textCapCharacters"
+            android:fontFamily="monospace"/>
+    </LinearLayout>
+
+</LinearLayout>
