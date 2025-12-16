@@ -7,6 +7,14 @@
 **KreateColorPicker** is a highly customizable, modular, and performance-optimized Color Picker library for Android.
 Unlike traditional color pickers that force a specific UI dialog, **KreateColorPicker** provides individual views (Hue, Saturation, Alpha, Gradient Bar) and a powerful Logic Controller. This gives you **100% freedom** to design your own UI (XML) while we handle the complex color logic.
 
+## 📱 Screenshots
+
+| Solid Color Mode | Linear Gradient | Radial Gradient |
+|:---:|:---:|:---:|
+| <img src="screenshots/solid.png" width="250"/> | <img src="screenshots/linear.png" width="250"/> | <img src="screenshots/radial.png" width="250"/> |
+
+*(Note: Replace the image paths above with your actual screenshot URLs if they are not in a folder named 'screenshots')*
+
 ## ✨ Features
 
 *   🌈 **Solid Color Mode:** Supports Hue, Saturation, Value, and Alpha transparency.
