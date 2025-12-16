@@ -13,7 +13,6 @@ Unlike traditional color pickers that force a specific UI dialog, **KreateColorP
 |:---:|:---:|:---:|
 | <img src="screenshots/solid.png" width="250"/> | <img src="screenshots/linear.png" width="250"/> | <img src="screenshots/radial.png" width="250"/> |
 
-*(Note: Replace the image paths above with your actual screenshot URLs if they are not in a folder named 'screenshots')*
 
 ## ✨ Features
 
